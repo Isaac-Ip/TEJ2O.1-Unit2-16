@@ -25,18 +25,18 @@ display.show(Image.HAPPY)
 
 while True:
     # Output a pulse to trigger ultrasonic burst
-        trig.write_digital(1)
-        trig.write_digital(0)
+    trig.write_digital(1)
+    trig.write_digital(0)
 
-        # Measure the input echo pulse in microseconds, convert to seconds
-        micros = time_pulse_us(echo, 1)
-        t_echo = micros / 1000000
-        # Calculate distance in cm and display on micro:bit
-        dist_cm = (t_echo / 2) * 34300
-        display.scroll(str(int(dist_cm)))
-        if dist_cm < 5:
-            radio.send("Too close")
-            sleep(1000)
-        else:
-            radio.send("")
-            sleep(1000)
+    # Measure the input echo pulse in microseconds, convert to seconds
+    micros = time_pulse_us(echo, 1)
+    t_echo = micros / 1000000
+    # Calculate distance in cm and display on micro:bit
+    dist_cm = (t_echo / 2) * 34300
+    display.scroll(str(int(dist_cm)))
+    if dist_cm < 5:
+        radio.send("Too close")
+        sleep(1000)
+    else:
+        radio.send("")
+        sleep(1000)
